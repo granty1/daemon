@@ -40,7 +40,7 @@ func Start() {
 	}
 
 	if !child_proc {
-		log.Println("parent proc:", os.Getpid())
+		log.Println("boot proc:", os.Getpid())
 		// start fork
 		cmd := exec.Command(os.Args[0], os.Args[1:]...)
 
