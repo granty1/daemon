@@ -23,7 +23,6 @@ func Run() {
 		flag.Parse()
 	}
 
-	log.Println(*daemonFlag)
 	if !(*daemonFlag) {
 		return
 	}
@@ -57,14 +56,11 @@ func Start() {
 		if err := cmd.Start(); err != nil {
 			error(err.Error())
 		}
-		log.Println("start child proc:", cmd.Process.Pid)
+		log.Println("start daemon proc:", cmd.Process.Pid)
 		log.Println("echo log >> daemon.log")
 		// parent process exit success
 		os.Exit(0)
 	}
-
-	// child process
-	log.Println("child proc:", os.Getpid())
 }
 
 func error(content ...string) {
