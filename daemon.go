@@ -15,7 +15,7 @@ const (
 
 var (
 	// --daemon flag
-	daemonFlag = flag.Bool("daemon", false, "run as daemon process")
+	daemonFlag = flag.Bool("d", false, "run as daemon process")
 )
 
 func Run() {
