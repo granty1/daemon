@@ -44,7 +44,7 @@ func Start() {
 		cmd := exec.Command(os.Args[0], os.Args[1:]...)
 
 		envs = append(envs, DaemonEnv)
-		log.Println("start daemon proc")
+		log.Println("daemon proc start success!")
 		cmd.Env = append(cmd.Env, envs...)
 		if err := cmd.Start(); err != nil {
 			error(err.Error())
