@@ -45,19 +45,18 @@ func Start() {
 		cmd := exec.Command(os.Args[0], os.Args[1:]...)
 
 		envs = append(envs, DaemonEnv)
-		fd, err := os.OpenFile("daemon.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
-		if err != nil {
-			error(err.Error())
-		}
+		// fd, err := os.OpenFile("daemon.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+		// if err != nil {
+		// 	error(err.Error())
+		// }
 
-		cmd.Stderr = fd
-		cmd.Stdout = fd
+		// cmd.Stderr = fd
+		// cmd.Stdout = fd
+		log.Println("start daemon proc")
 		cmd.Env = append(cmd.Env, envs...)
 		if err := cmd.Start(); err != nil {
 			error(err.Error())
 		}
-		log.Println("start daemon proc:", cmd.Process.Pid)
-		log.Println("echo log >> daemon.log")
 		// parent process exit success
 		os.Exit(0)
 	}
